@@ -1,4 +1,10 @@
-# Selectivity-estimation-for-querying-set-valued-data
+# Selectivity Estimation for Queries Containing Predicates over Set-valued Attributes
+## Introduction
+This repo contains the source code of our [SIGMOD 2024 paper](https://dl.acm.org/doi/pdf/10.1145/3626755).
+
+In this work, we presents novel techniques for selectivity estimation on queries involving predicates over set-valued attributes. We first propose the set-valued column factorization problem, whereby each each set-valued column is converted to multiple numeric subcolumns, and set containment predicates are converted to numeric comparison predicates. This enables us to leverage any existing estimator to perform selectivity estimation. We then develop two methods for column factorization and query conversion, namely ST and ST-hist.
+
+## Quick Start
 We use a sample dataset from Twitter which contains 10000 tuples. The running codes mainly contains 4 steps.
 **Preprocessing**. Preprocess partitioning with graph coloring based method.
 **ST**. Convert the data and query with ST method.
@@ -26,8 +32,6 @@ bash run_settrie_hist.sh 5 500
 ```
 The partition is same as the partition in **ST**, so in the script we directly copy the partition. If you don't partition first, please use `color_based_dis_part.cc` to partition the elements first. Then construct histogram based settrie based on the partitioning (`freq_set_map.cc`). Finally convert the queries based on the settrie (`settrie_trans_query_hist.cc`). The partition result, settrie and converted query are stored in the folder `./partition_5_500`. You can change the parameter of this command to change the number of subcolumns and the number of kept nodes on each settrie.
 
-
-
 ##### Estimation
 If you want to do estimation with **ST** on any estimator, you should run the following command first to convert the dataset:
 ```bash
@@ -45,3 +49,20 @@ If you want to estimate with Neurocard, we have modified the source code of Deep
 
 #### Incremental ST and STH
 The incremental **ST** and **STH** are in the folder `incremental`. The running procedure are similar with the base methods.
+
+## Citation
+If you find this work helpful, please cite [our paper](https://dl.acm.org/doi/pdf/10.1145/3626755):
+```latex
+@article{DBLP:journals/pacmmod/MengCC23,
+  author       = {Zizhong Meng,
+                  Xin Cao and
+                  Gao Cong},
+  title        = {Selectivity Estimation for Queries Containing Predicates over Set-Valued
+                  Attributes},
+  journal      = {Proceedings of the ACM on Management of Data},
+  volume       = {1},
+  number       = {4},
+  pages        = {261:1--261:26},
+  year         = {2023}
+}
+```
