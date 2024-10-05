@@ -11,6 +11,18 @@ We use a sample dataset from Twitter which contains 10000 tuples. The running co
 **STH**. Convert the data and query with ST-hist method.
 **Estimation**. Estimate the converted query on Postgres, Neurocard or DeepDB.
 
+##### Environmental Setup
+Tested with GCC 7.5 and Python 3.7 on Ubuntu 18.04.
+```bash
+sudo apt install build-essential
+sudo apt-get install libboost-all-dev
+pip3 install psycopg2
+pip3 install numpy==1.21.6
+pip3 install pandas==1.0.5
+pip3 install networkx==2.4
+```
+This environment is for running our algorithm and testing on Postgres. If you want to test on Neurocard and DeepDB, you can refer to their environmental requirments.
+
 ##### Preprocessing
 To partition the elements with graph coloring based method, you could run:
 ```bash
@@ -41,11 +53,11 @@ Alternatively, if you want to do estimation with **STH**, please modify the line
 ```bash
 python3 clique_trans_table.py --partnum 5 --keepnum 500
 ```
-To estimate with Postgres, you can modify `generate_sql.py` and run it to populate the converted dataset into Postgres. You need the package `psycopg2` to run it. Then you can modify the folder path and parameters in `postgres_est_new.py` and run it to estimate.
+To estimate with Postgres, you can modify `generate_sql.py` and run it to populate the converted dataset into Postgres. You need the package `psycopg2` to run it. Then you can modify the folder path and parameters of the database connection in `postgres_est_new.py` and run it to estimate. Specifically, you can modify the query path at line 111-116 or you can use the parameters from line 12-19 to accept the parameters from command line. You also need to modify line 23 to connet your own database. 
 
-If you want to estimate with Neurocard, we have modified the source code of Neurocard to support our method. You can refer to [Neurocard](https://github.com/neurocard/neurocard) to insert new table and run queries. We also provide the running scripts, but you need to modify some folder path and parameters in `datasets.py` and `run.py`.
+If you want to estimate with Neurocard, we have modified the source code of Neurocard to support our method. You can refer to [Neurocard](https://github.com/neurocard/neurocard) to insert new table and run queries. We also provide the running scripts, but you need to modify some folder path and parameters in `datasets.py` (Line 173 for geotweet) and `run.py` (line 515-523).
 
-If you want to estimate with Neurocard, we have modified the source code of DeepDB to support our method. You can refer to [DeepDB](https://github.com/DataManagementLab/deepdb-public) to insert new table and run queries. We also provide the running scripts, but you need to modify some folder path and parameters in `maqp.py` and `schemas/geotweet/schema.py`.
+If you want to estimate with DeepDB, we have modified the source code of DeepDB to support our method. You can refer to [DeepDB](https://github.com/DataManagementLab/deepdb-public) to insert new table and run queries. We also provide the running scripts, but you need to modify some folder path and parameters in `maqp.py` and `schemas/geotweet/schema.py`.
 
 #### Incremental ST and STH
 The incremental **ST** and **STH** are in the folder `incremental`. The running procedure are similar with the base methods.
