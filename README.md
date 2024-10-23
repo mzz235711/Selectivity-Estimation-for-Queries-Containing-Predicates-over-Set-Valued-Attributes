@@ -12,10 +12,12 @@ We use a sample dataset from Twitter which contains 10000 tuples. The running co
 **Estimation**. Estimate the converted query on Postgres, Neurocard or DeepDB.
 
 ##### Environmental Setup
-Tested with GCC 7.5 and Python 3.7 on Ubuntu 18.04.
+Tested with GCC 7.5 and Python 3.7 on Ubuntu 18.04. It is suggested to use conda to set the Python environment
 ```bash
 sudo apt install build-essential
 sudo apt-get install libboost-all-dev
+conda create -n "myenv" python=3.7.0
+conda activate myenv
 pip3 install psycopg2
 pip3 install numpy==1.21.6
 pip3 install pandas==1.0.5
