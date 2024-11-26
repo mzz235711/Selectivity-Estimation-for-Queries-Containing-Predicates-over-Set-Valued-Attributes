@@ -30,8 +30,8 @@ if __name__ == '__main__':
     glo._init()
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--partnum', default=20, help='part number', type=int)
-    parser.add_argument('--keepnum', default=-1, type=int)
+    parser.add_argument('--partnum', default=20, help='partition number', type=int)
+    parser.add_argument('--keepnum', default=-1, help='number of kept nodes for STH, -1 for ST method, -2 for graph color method', type=int)
     parser.add_argument('--dataset', default='ssb-500gb', help='Which dataset to be used')
 
     # generate hdf
