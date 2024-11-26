@@ -59,7 +59,7 @@ To estimate with Postgres, you can modify `generate_sql.py` and run it to popula
 
 If you want to estimate with Neurocard, we have modified the source code of Neurocard to support our method. You can refer to [Neurocard](https://github.com/neurocard/neurocard) to insert new table and run queries. We also provide the running scripts, but you need to modify some folder path and parameters in `datasets.py` (Line 317 for geotweet) and `run.py` (line 515-523) to the correct dataset folder path and query folder path.
 
-If you want to estimate with DeepDB, we have modified the source code of DeepDB to support our method. You can refer to [DeepDB](https://github.com/DataManagementLab/deepdb-public) to insert new table and run queries. We also provide the running scripts, but you need to modify some folder path and parameters in `maqp.py` and `schemas/geotweet/schema.py`.
+If you want to estimate with DeepDB, we have modified the source code of DeepDB to support our method. You can refer to [DeepDB](https://github.com/DataManagementLab/deepdb-public) to insert new table and run queries. We also provide the running scripts, but you need to speficify `args.query_file_location` for query location in `maqp.py` and `csvfile` in `schemas/geotweet/schema.py` for dataset file location.
 
 #### Incremental ST and STH
 The incremental **ST** and **STH** are in the folder `incremental`. The running procedure are similar with the base methods.
