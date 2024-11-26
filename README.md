@@ -12,7 +12,7 @@ We use a sample dataset from Twitter which contains 10000 tuples. The running co
 **Estimation**. Estimate the converted query on Postgres, Neurocard or DeepDB.
 
 ##### Environmental Setup
-Tested with GCC 7.5 and Python 3.7 on Ubuntu 18.04. It is suggested to use conda to set the Python environment
+Tested with GCC 7.5 and Python 3.7. It is suggested to use conda to set the Python environment
 ```bash
 sudo apt install build-essential
 sudo apt-get install libboost-all-dev
@@ -57,7 +57,7 @@ python3 clique_trans_table.py --partnum 5 --keepnum 500
 ```
 To estimate with Postgres, you can modify `generate_sql.py` and run it to populate the converted dataset into Postgres. You need the package `psycopg2` to run it. Then you can modify the folder path and parameters of the database connection in `postgres_est_new.py` and run it to estimate. Specifically, you can modify the query path at line 111-116 or you can use the parameters from line 12-19 to accept the parameters from command line. You also need to modify line 23 to connet your own database. 
 
-If you want to estimate with Neurocard, we have modified the source code of Neurocard to support our method. You can refer to [Neurocard](https://github.com/neurocard/neurocard) to insert new table and run queries. We also provide the running scripts, but you need to modify some folder path and parameters in `datasets.py` (Line 173 for geotweet) and `run.py` (line 515-523).
+If you want to estimate with Neurocard, we have modified the source code of Neurocard to support our method. You can refer to [Neurocard](https://github.com/neurocard/neurocard) to insert new table and run queries. We also provide the running scripts, but you need to modify some folder path and parameters in `datasets.py` (Line 317 for geotweet) and `run.py` (line 515-523) to the correct dataset folder path and query folder path.
 
 If you want to estimate with DeepDB, we have modified the source code of DeepDB to support our method. You can refer to [DeepDB](https://github.com/DataManagementLab/deepdb-public) to insert new table and run queries. We also provide the running scripts, but you need to modify some folder path and parameters in `maqp.py` and `schemas/geotweet/schema.py`.
 
